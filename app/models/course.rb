@@ -12,7 +12,8 @@
 class Course < ActiveRecord::Base
 	attr_accessible :name, :college_id
 	belongs_to :college
-	has_many :users
+  has_many :user_courses
+	has_many :users, through: :user_courses
 	has_many :topics
 
 	validates :name, presence: true, uniqueness: { case_sensitive: false }

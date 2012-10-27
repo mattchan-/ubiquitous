@@ -1,5 +1,8 @@
 <li>
   <%= link_to course.name, course %>
+  <% if signed_in? %>
+    | <%= link_to "add course", user_courses_path(course_id: course), method: :post %>
+  <% end %>
   <% if current_user.admin? %>
     | <%= link_to "edit", edit_course_path(course) %> |
 

@@ -6,6 +6,11 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
         <%= @user.college.name %>
+        <% @courses.each do |course| %>
+          <li>
+            <%= link_to course.name, course %>
+          </li>
+        <% end %>
       </h1>
     </section>
   </aside>

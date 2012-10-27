@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   belongs_to :college
-  has_many :courses
+  has_many :user_courses
+  has_many :courses, through: :user_courses
   has_many :posts, dependent: :destroy
 
 	before_save { |user| user.email = email.downcase }

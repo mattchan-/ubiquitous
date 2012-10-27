@@ -17,6 +17,7 @@ Ubiquitous::Application.routes.draw do
     end
   end
   resources :posts
+  resources :user_courses, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new'
