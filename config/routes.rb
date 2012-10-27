@@ -1,6 +1,22 @@
 Ubiquitous::Application.routes.draw do
   resources :users
-  resources :colleges
+  resources :colleges do
+    member do
+      post 'add_course'
+    end
+  end
+  resources :courses do
+    member do
+      get 'add_topic'
+      post 'save_topic'
+    end
+  end
+  resources :topics do
+    member do
+      post 'reply'
+    end
+  end
+  resources :posts
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new'

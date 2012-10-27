@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   belongs_to :college
   has_many :courses
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
 	before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

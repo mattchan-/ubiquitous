@@ -1,6 +1,10 @@
 <% provide(:title, 'All colleges') %>
 <h1>All colleges</h1>
 
+<% if current_user.admin? %>
+  <li><%= link_to "Add College", new_college_path %></li>
+<% end %>
+
 <%= will_paginate %>
 
 <ul class="colleges">

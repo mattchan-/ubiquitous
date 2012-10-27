@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
 	belongs_to :user
 
 	validates :content, presence: true
+  validates :user_id, presence: true
 
-	default_scope order: "post.created_at ASC"
+	default_scope order: "created_at ASC"
 end

@@ -1,0 +1,14 @@
+<% provide(:title, @course.name) %>
+<h1>
+  <%= @course.name %>
+</h1>
+
+<li><%= link_to "Add Topic", add_topic_course_path(@course) %></li>
+
+<%= will_paginate @topics %>
+
+<ul class="topics">
+  <%= render @course.topics %>
+</ul>
+
+<%= will_paginate @topics %>

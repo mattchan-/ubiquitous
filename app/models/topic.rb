@@ -15,4 +15,6 @@ class Topic < ActiveRecord::Base
 	has_many :posts
 
 	validates :name, presence: true
+
+  accepts_nested_attributes_for :posts
 end

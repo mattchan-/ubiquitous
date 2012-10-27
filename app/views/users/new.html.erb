@@ -18,6 +18,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
+      <%= f.label :college %>
       <%= f.collection_select(:college_id, College.order('name ASC').all, :id, :name) %>
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>

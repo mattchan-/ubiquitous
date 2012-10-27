@@ -1,0 +1,16 @@
+<% provide(:title, @topic.name) %>
+
+<h1> <%= @topic.name %></h1>
+<%= link_to "edit", edit_topic_path(@topic) %>
+
+
+
+<%= will_paginate @posts %>
+
+<ul class="posts">
+  <%= render @posts %>
+</ul>
+
+<%= will_paginate @posts %>
+
+<%= render "posts/new" %>

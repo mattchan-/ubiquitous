@@ -12,6 +12,9 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <%= f.label :college %>
+      <%= f.collection_select(:college_id, College.order('name ASC').all, :id, :name) %>
+
       <%= f.label :password %>
       <%= f.password_field :password %>
 

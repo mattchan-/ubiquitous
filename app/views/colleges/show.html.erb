@@ -1,11 +1,16 @@
 <% provide(:title, @college.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= @college.name %>
-        <%= link_to "edit", edit_college_path(@college) %>
-      </h1>
-    </section>
-  </aside>
-</div>
+
+<h1> <%= @college.name %></h1>
+<%= link_to "edit", edit_college_path(@college) %>
+
+<% if current_user.admin? %>
+  <%= render "courses/new" %>
+<% end %>
+
+<%= will_paginate @courses %>
+
+<ul class="courses">
+  <%= render @courses %>
+</ul>
+
+<%= will_paginate @courses %>
