@@ -1,5 +1,6 @@
 Ubiquitous::Application.routes.draw do
   resources :users
+  resources :colleges
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new'

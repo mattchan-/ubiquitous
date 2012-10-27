@@ -11,7 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027085525) do
+ActiveRecord::Schema.define(:version => 20121027095100) do
+
+  create_table "colleges", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.integer  "college_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "courses", ["college_id"], :name => "index_courses_on_college_id"
+
+  create_table "posts", :force => true do |t|
+    t.text     "content"
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["topic_id"], :name => "index_posts_on_topic_id"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "topics", ["course_id"], :name => "index_topics_on_course_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -21,8 +56,10 @@ ActiveRecord::Schema.define(:version => 20121027085525) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.integer  "college_id"
   end
 
+  add_index "users", ["college_id"], :name => "index_users_on_college_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
